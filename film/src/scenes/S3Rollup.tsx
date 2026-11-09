@@ -81,7 +81,7 @@ export const S3Rollup: React.FC = () => {
 
       {/* labels */}
       <div style={{ position: "absolute", left: 72, top: 140 }}>
-        <Eyebrow text="03 — The rollup" start={584} exitAt={EXIT} />
+        <Eyebrow text="03 · The rollup" start={584} exitAt={EXIT} />
       </div>
       <div style={{ position: "absolute", right: 72, top: 136, textAlign: "right", ...enter(frame, fps, 590, { exitAt: a0 + 30 }) }}>
         <div style={{ ...theme.display, fontSize: 64, color: c.snow }}>

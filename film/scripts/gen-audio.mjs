@@ -283,7 +283,7 @@ for (let c = 0; c < 5; c++) tick(c6(1566 + c * 11), 0.035, 5200, 0.4);
 pop(c6(1630), 0.09, 0, 420); pop(c6(1636), 0.08, 0, 300); // source down
 pop(c6(1764), 0.07, 0, 700); pop(c6(1769), 0.07, 0, 1000); // back up
 whoosh(c6(1854), 0.6, 0.2, false);
-// Scene 7: numbers (design frames; two bars longer) — counters, command, pins dropping across the country
+// Scene 7: numbers (design frames; two bars longer): counters, command, pins dropping across the country
 const c7 = (f) => at("numbers", f);
 for (let f = 1750; f < 1830; f += 2) tick(c7(f), 0.024, 3000 + (f % 8) * 150, -0.3);
 for (let i = 0; i < 17; i++) tick(c7(1764 + i / 1.2), 0.03, 4400, 0.2);

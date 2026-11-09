@@ -103,7 +103,7 @@ export const S1Map: React.FC = () => {
 
       {/* headline */}
       <div style={{ position: "absolute", left: 72, top: 176 }}>
-        <Eyebrow text="01 — 41'285 km² · 66 public sources" start={104} exitAt={EXIT} />
+        <Eyebrow text="01 · 41'285 km² · 66 public sources" start={104} exitAt={EXIT} />
         <div style={{ height: 22 }} />
         <WordRise
           text={"Every Swiss\nsource."}

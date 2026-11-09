@@ -1,4 +1,4 @@
-# Swissyphus — explainer film
+# Swissyphus: explainer film
 
 A 90-second motion piece (1920×1080, 30 fps, H.264 + AAC) explaining what Swissyphus is and what it
 can do, in the Carte Nationale brand system (Lake Deep / Contour / Glacier / Snowfield / Trail Marker,

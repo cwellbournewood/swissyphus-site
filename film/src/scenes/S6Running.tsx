@@ -143,7 +143,7 @@ export const S6Running: React.FC = () => {
 
       {/* type column */}
       <div style={{ position: "absolute", left: 72, top: 150, width: 700 }}>
-        <Eyebrow text="06 — Reliability" start={START + 4} exitAt={EXIT} />
+        <Eyebrow text="06 · Reliability" start={START + 4} exitAt={EXIT} />
         <div style={{ height: 22 }} />
         <WordRise text={"Always\nrunning."} start={START + 10} exitAt={EXIT} stagger={6} style={{ ...theme.display, fontSize: 104, color: c.snow }} />
         <div style={{ height: 46 }} />

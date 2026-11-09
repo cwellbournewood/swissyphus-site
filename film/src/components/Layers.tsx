@@ -5,7 +5,7 @@ import { breathe } from "../lib/anim";
 
 const { colors: c, alpha } = theme;
 
-/** Layer 1: drifting mesh on Night — never a flat solid. */
+/** Layer 1: drifting mesh on Night, never a flat solid. */
 export const BgMesh: React.FC<{ paper?: boolean }> = ({ paper }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -41,7 +41,7 @@ export const Hatch: React.FC<{ paper?: boolean; opacity?: number }> = ({ paper, 
   />
 );
 
-/** Layer 4: colour grade — cool shadows, a touch of lift in the highlights. */
+/** Layer 4: colour grade: cool shadows, a touch of lift in the highlights. */
 export const Grade: React.FC<{ paper?: boolean }> = ({ paper }) => (
   <AbsoluteFill
     style={{

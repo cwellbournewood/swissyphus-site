@@ -195,7 +195,7 @@
       <table class="tiers">
         <thead><tr><th scope="col">Tier</th><th scope="col">Rate limit</th><th scope="col">Monthly quota</th><th scope="col">How a caller gets it</th></tr></thead>
         <tbody>
-          <tr><td class="t">Anonymous</td><td>60 req/min per IP</td><td>&mdash;</td><td>Just call it</td></tr>
+          <tr><td class="t">Anonymous</td><td>60 req/min per IP</td><td>None</td><td>Just call it</td></tr>
           <tr class="hl"><td class="t">Free</td><td>240 req/min</td><td>50&rsquo;000</td><td class="mono">POST /v1/keys {"email": "you@example.com"}</td></tr>
           <tr><td class="t">Pro</td><td>1&rsquo;000 req/min</td><td>1&rsquo;000&rsquo;000</td><td>Promoted by the operator (<span class="c">/v1/admin</span>)</td></tr>
           <tr><td class="t">Enterprise</td><td>Unlimited</td><td>Unlimited</td><td>Set by the operator</td></tr>
@@ -240,7 +240,7 @@ curl -X DELETE -H "Authorization: Bearer sy_live_…" https://your-host/v1/keys 
   <div class="wrap foot-in">
     <div class="foot-brand">
       <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
-      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources, every answer cited, down to the exact upstream request.</p>
     </div>
     <div class="foot-col">
       <p class="eyebrow cool">Product</p>

@@ -31,7 +31,7 @@ export const S7Numbers: React.FC = () => {
       <DataPins start={START} exitAt={EXIT - 6} />
       <SheetFrame start={START + 6} exitAt={EXIT} />
       <div style={{ position: "absolute", left: 72, top: 140 }}>
-        <Eyebrow text="07 — Zero friction" start={START + 10} exitAt={EXIT} />
+        <Eyebrow text="07 · Zero friction" start={START + 10} exitAt={EXIT} />
         <div style={{ height: 22 }} />
         <WordRise text={"One command.\nNo signup."} start={START + 16} exitAt={EXIT} stagger={4} style={{ ...theme.display, fontSize: 76, color: c.snow }} />
         <div style={{ height: 30 }} />

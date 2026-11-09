@@ -24,7 +24,7 @@ const JSON_LINES = [
   `  "source": {`,
   `    "name": "SLF IMIS measurement network",`,
   `    "operator": "WSL Institute for Snow and Avalanche Research SLF",`,
-  `    "licence": "© SLF/WSL IMIS — publicly accessible measurements; …",`,
+  `    "licence": "© SLF/WSL IMIS: publicly accessible measurements; …",`,
   `    "attribution": "© SLF/WSL IMIS"`,
   `  },`,
   `  "retrieved_at": "2026-11-09T11:43:56.449Z",`,
@@ -81,7 +81,7 @@ export const S5Cited: React.FC = () => {
 
       {/* headline column */}
       <div style={{ position: "absolute", left: 72, top: 168, width: 760 }}>
-        <Eyebrow text="05 — The envelope" start={1232} exitAt={EXIT} color={c.trailInk} />
+        <Eyebrow text="05 · The envelope" start={1232} exitAt={EXIT} color={c.trailInk} />
         <div style={{ height: 22 }} />
         <WordRise text={"Every answer\ncited."} start={1238} exitAt={EXIT - 2} stagger={5} style={{ ...theme.display, fontSize: 82, color: c.lake }} />
         <div style={{ height: 22 }} />

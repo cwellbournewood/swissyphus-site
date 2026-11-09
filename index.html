@@ -246,9 +246,9 @@
 <pre class="term" id="envelope"><span class="t-mute">{</span>
   <span class="t-snow">"data"</span>: { <span class="t-snow">"currency"</span>: <span class="t-acc">"EUR"</span>, <span class="t-snow">"rate_chf"</span>: <span class="t-acc">0.92841</span>, <span class="t-snow">"month"</span>: <span class="t-acc">"2026-10"</span> },
   <span class="t-snow">"source"</span>: {
-    <span class="t-snow">"name"</span>: <span class="t-acc">"SNB Data Portal — CHF exchange rates (monthly)"</span>,
+    <span class="t-snow">"name"</span>: <span class="t-acc">"SNB Data Portal: CHF exchange rates (monthly)"</span>,
     <span class="t-snow">"operator"</span>: <span class="t-acc">"Swiss National Bank"</span>,
-    <span class="t-snow">"licence"</span>: <span class="t-acc">"SNB data portal terms — free use with attribution"</span>,
+    <span class="t-snow">"licence"</span>: <span class="t-acc">"SNB data portal terms, free use with attribution"</span>,
     <span class="t-snow">"attribution"</span>: <span class="t-acc">"© Swiss National Bank, data.snb.ch"</span>
   },
   <span class="t-snow">"retrieved_at"</span>: <span class="t-acc">"2026-11-08T18:17:50.788Z"</span>,
@@ -272,7 +272,7 @@
   </div>
   <div class="split">
     <div class="stack">
-      <p class="eyebrow">01 &mdash; MCP, for agents</p>
+      <p class="eyebrow">01 &middot; MCP, for agents</p>
       <p class="body">stdio locally, Streamable HTTP when hosted. Every tool registers with a JSON schema, so Claude, Cursor, VS Code and any MCP client discover them without configuration. Short on context? <span class="c">--preset discovery</span> keeps 7 tools loaded and still reaches all of them.</p>
 <pre class="term"><span class="t-acc">&rarr;</span> tools/list
 <span class="t-mute">&larr; 151 tools with input schemas</span>
@@ -280,7 +280,7 @@
 <span class="t-mute">&larr; data + source envelope &middot; &copy; SLF</span></pre>
     </div>
     <div class="stack">
-      <p class="eyebrow">02 &mdash; REST, for everything else</p>
+      <p class="eyebrow">02 &middot; REST, for everything else</p>
       <p class="body">Plain HTTP and JSON for scripts, apps and cron. GET with query parameters, POST with a body, an OpenAPI 3.1 spec generated from the same tool schemas, and a remote MCP endpoint on the same port.</p>
 <pre class="term"><span class="t-acc">GET </span> /v1/tools/get_weather?plz=8001
 <span class="t-acc">POST</span> /v1/tools/compare_electricity_tariffs
@@ -330,7 +330,7 @@
   <div class="wrap foot-in">
     <div class="foot-brand">
       <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
-      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources, every answer cited, down to the exact upstream request.</p>
     </div>
     <div class="foot-col">
       <p class="eyebrow cool">Product</p>

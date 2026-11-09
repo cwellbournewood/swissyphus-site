@@ -8,7 +8,7 @@
   var TOOLS = [
     { fn: "get_weather", module: "weather", src: "MeteoSwiss", args: { plz: "8001" },
       desc: "Local forecast and current conditions for a Swiss postcode, from MeteoSwiss.",
-      data: '{ "plz": "8001", "current": { … }, "forecast": [ … ] }', attribution: "© MeteoSwiss", licence: "Swiss OGD — free use with attribution" },
+      data: '{ "plz": "8001", "current": { … }, "forecast": [ … ] }', attribution: "© MeteoSwiss", licence: "Swiss OGD: free use with attribution" },
     { fn: "get_connections", module: "transport", src: "Swiss timetable", args: { from: "Bern", to: "Lugano" },
       desc: "Journeys between two stops with changes, platforms and delays.",
       data: '{ "connections": [ { "sections": [ … ] } ] }', attribution: "© transport.opendata.ch" },
