@@ -1,0 +1,51 @@
+{
+  "fps": 30,
+  "bpm": 100,
+  "framesPerBeat": 18,
+  "scenes": {
+    "map": [
+      0,
+      288
+    ],
+    "myth": [
+      288,
+      576
+    ],
+    "rollup": [
+      576,
+      792
+    ],
+    "ask": [
+      792,
+      1368
+    ],
+    "cited": [
+      1224,
+      1512
+    ],
+    "running": [
+      1512,
+      1872
+    ],
+    "numbers": [
+      1728,
+      2016
+    ],
+    "end": [
+      1872,
+      2268
+    ]
+  },
+  "duration": 2700,
+  "offset": {
+    "map": 0,
+    "myth": 0,
+    "rollup": 0,
+    "ask": 0,
+    "cited": 144,
+    "running": 144,
+    "numbers": 288,
+    "end": 432
+  },
+  "note": "scenes = design frames each scene is authored in; a scene plays at design + offset. Real cuts: ask 792-1368, cited 1368-1656, running 1656-2016, numbers 2016-2304, end 2304-2700 (90.0 s). Every cut lands on a bar (72 frames)."
+}
