@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modules · Swissyphus</title>
+<meta name="description" content="Every Swissyphus module and tool, with its sources. Search the atlas and build the exact rollup your agent needs.">
+<meta name="theme-color" content="#123c4d">
+<meta property="og:title" content="Swissyphus">
+<meta property="og:description" content="66 Swiss public sources in one MCP server and REST API. 151 tools, zero API keys, every answer cited.">
+<meta property="og:image" content="assets/img/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+.ph{padding-block:clamp(44px,6vw,80px) clamp(32px,4vw,52px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px 56px;align-items:end}
+@media (max-width:900px){.ph{grid-template-columns:minmax(0,1fr)}}
+.toolbar{position:sticky;top:64px;z-index:40;background:rgba(238,243,242,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.toolbar-in{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-block:14px}
+.search{display:flex;align-items:center;gap:10px;border:1px solid var(--lake);background:var(--snow);padding:0 6px 0 14px;min-height:46px;flex:1 1 300px;max-width:440px}
+.search:focus-within{outline:2px solid var(--trail);outline-offset:2px}
+.search label{font-family:var(--mono);font-size:12px;color:var(--trail-ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;font-family:var(--mono);font-size:13.5px;color:var(--lake);padding:10px 0;outline:none}
+.search input::placeholder{color:#5f7a82}
+.clear{font-family:var(--mono);font-size:11px;background:transparent;border:0;color:var(--ink-2);cursor:pointer;min-height:36px;padding:0 8px}
+.clear:hover{color:var(--trail-ink)}
+.count{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-left:auto;letter-spacing:.06em}
+.themes{display:flex;flex-wrap:wrap;gap:8px}
+.grp{border-bottom:1px solid var(--rule)}
+.grp-in{padding-block:clamp(36px,5vw,56px);display:flex;flex-direction:column;gap:24px}
+.grp-head{display:flex;align-items:baseline;gap:12px 20px;flex-wrap:wrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));gap:20px}
+.card{border:1px solid var(--rule);background:var(--snow);display:flex;flex-direction:column;min-width:0;transition:box-shadow .15s;scroll-margin-top:150px}
+.card.sel{box-shadow:inset 0 0 0 2px var(--trail)}
+.card:target{box-shadow:inset 0 0 0 2px var(--contour)}
+.card-h{display:flex;align-items:baseline;gap:12px;padding:15px 18px;background:var(--lake);color:var(--snow)}
+.card-h .nm{font-family:var(--mono);font-size:15px;font-weight:600;margin:0}
+.card-h .sr{font-family:var(--mono);font-size:11px;color:var(--glacier);margin-left:auto;text-align:right}
+.card-t{padding:14px 18px 0;font-weight:700;font-size:14px}
+.card-d{padding:6px 18px 6px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.tools{padding:4px 18px 10px;display:flex;flex-direction:column}
+.tool{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:4px 14px;padding:9px 0;border-top:1px solid var(--rule-soft)}
+.tool .fn{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--lake);overflow-wrap:anywhere}
+.tool .td{font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+.tool.match .fn{background:rgba(217,123,79,.22)}
+@media (max-width:480px){.tool{grid-template-columns:minmax(0,1fr)}}
+.card-f{margin-top:auto;display:flex;align-items:center;gap:12px;padding:10px 12px 12px 18px;border-top:1px solid var(--rule)}
+.card-f .n{font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.06em}
+.add{margin-left:auto;font-family:var(--mono);font-size:12px;min-height:40px;padding:0 14px;border:1px solid var(--lake);background:transparent;color:var(--lake);cursor:pointer}
+.add:hover{background:var(--glacier)}
+.add.on{background:var(--trail);border-color:var(--trail);color:var(--night);font-weight:600}
+.empty{padding-block:72px;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.builder{position:sticky;bottom:0;z-index:45;background:var(--night);color:var(--snow);border-top:2px solid var(--trail)}
+.builder-in{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-block:12px}
+.builder .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--trail-lt);text-transform:uppercase}
+.builder .lbl b{color:var(--snow);font-weight:600}
+.builder .cmd{flex:1 1 360px;background:rgba(3,20,28,.4);border-color:var(--rule-dark)}
+.builder .btn{border-color:rgba(238,243,242,.45);color:var(--snow)}
+.builder .btn:hover{background:rgba(238,243,242,.1)}
+</style>
+</head>
+<body>
+<div class="site">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+    <button class="menu-btn" type="button" aria-controls="sy-nav" aria-expanded="false"><span class="burger" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    <nav class="nav-links" id="sy-nav" aria-label="Main">
+      <a class="nav-link" href="index.html#rollup">The rollup</a><a class="nav-link on" aria-current="page" href="modules.html">Modules</a><a class="nav-link" href="api.html">API</a><a class="nav-link" href="index.html#trust">Provenance</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <button class="btn solid btn-sm btn-cmd nav-cta" type="button" data-copy="install" aria-label="Copy install command: npx -y swissyphus"><span class="prompt">$</span>npx -y swissyphus</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="band hatch" aria-labelledby="mods-title">
+  <div class="wrap ph">
+    <div class="stack" style="gap:22px">
+      <p class="eyebrow">The map sheet &middot; <span data-count="modules">45</span> modules &middot; <span data-count="tools">151</span> tools</p>
+      <h1 class="display d2" id="mods-title">Everything<br>we roll <span class="accent">up.</span></h1>
+    </div>
+    <div class="stack">
+      <p class="lead">One MCP server drawing on <span data-count="sources">66</span> Swiss public sources. Search the atlas, then add modules to build exactly the rollup your agent needs. Every tool returns typed JSON with full provenance.</p>
+      <div class="row-wrap">
+        <span class="small">Start from a preset:</span>
+        <div class="row-wrap" id="presets" aria-label="Presets"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="wrap toolbar-in">
+    <div class="search">
+      <label for="mod-q">/</label>
+      <input id="mod-q" type="search" placeholder="Search modules, tools, sources" autocomplete="off" spellcheck="false">
+      <button class="clear" type="button" id="clear-q" hidden>Clear</button>
+    </div>
+    <div class="themes" id="themes" aria-label="Themes"></div>
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+</div>
+
+<div id="groups"></div>
+
+<section class="band" id="empty" hidden>
+  <div class="wrap empty">
+    <p class="eyebrow">No match on this sheet</p>
+    <h2 class="display d3">Nothing called &ldquo;<span id="empty-q"></span>&rdquo; up here.</h2>
+    <p class="body">Try a source (SBB, Fedlex, SLF), a domain (tariffs, avalanche, sanctions) or a tool name. Or ask <span class="c">find_data</span>: it searches every catalogue at once.</p>
+    <button class="btn" type="button" id="reset">Show all modules</button>
+  </div>
+</section>
+
+<section class="band dark" aria-label="Add a connector">
+  <div class="split">
+    <div class="stack">
+      <p class="eyebrow">Discovery built in</p>
+      <h2 class="display d3">Beyond the tools</h2>
+      <p class="body"><span class="c">find_data</span> searches opendata.swiss, ~900 federal map layers, every BFS table, the LINDAS cubes, cantonal and SBB portals, the SNB, I14Y and Wikidata at once, and returns the exact call that fetches the data. Agents can then filter and aggregate inside 15&rsquo;000+ datasets.</p>
+    </div>
+    <div class="stack">
+      <p class="eyebrow cool">Add a connector</p>
+      <p class="body">One file exporting a module: a manifest per source (licence, attribution, cache TTL), typed tools and a health probe. The catalogue on this page is generated from the same schemas that serve MCP.</p>
+      <div class="row-wrap"><a class="btn" href="https://github.com/cwellbournewood/swissyphus/blob/main/docs/ARCHITECTURE.md">How it works &rarr;</a><a class="btn" href="https://github.com/cwellbournewood/swissyphus/issues/new?template=data_source.yml">Suggest a source</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="builder" aria-label="Your rollup">
+  <div class="wrap builder-in">
+    <span class="lbl">Your rollup &middot; <b id="sel-label">all modules</b></span>
+    <div class="cmd"><span class="p">$</span><span class="x" id="sel-cmd">npx -y swissyphus</span><button class="copy" type="button" data-copy-from="#sel-cmd">Copy</button></div>
+    <button class="btn btn-sm" type="button" id="clear-sel" hidden>Clear</button>
+  </div>
+</div>
+
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Product</p>
+      <a href="modules.html">Modules</a>
+      <a href="api.html">API reference</a>
+      <a href="setup.html">Setup</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/docs/TOOLS.md">Tool catalogue</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Trust</p>
+      <a href="index.html#trust">Provenance</a>
+      <a href="api.html#errors">Errors</a>
+      <a href="api.html#tiers">Keys &amp; tiers</a>
+      <a href="setup.html#doctor">Source health</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/PRIVACY.md">Privacy</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Project</p>
+      <a href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <a href="https://www.npmjs.com/package/swissyphus">npm</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="brand.html">Brand kit</a>
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <span class="mono">MIT &middot; the data keeps its own licences &middot; independent, not endorsed by the Swiss Confederation</span>
+    <span class="display foot-tag">Uphill, daily &middot; CH &middot; 2026</span>
+  </div>
+</footer>
+</div>
+<script src="assets/js/catalogue.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/modules.js"></script>
+</body>
+</html>

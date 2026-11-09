@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand kit · Swissyphus</title>
+<meta name="description" content="The Swissyphus brand kit: the boulder-on-the-slope mark, the Carte Nationale palette, typography and voice.">
+<meta name="theme-color" content="#123c4d">
+<meta property="og:title" content="Swissyphus">
+<meta property="og:description" content="66 Swiss public sources in one MCP server and REST API. 151 tools, zero API keys, every answer cited.">
+<meta property="og:image" content="assets/img/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+.kit{max-width:var(--wrap);margin:clamp(24px,4vw,48px) auto;border:1px solid var(--rule);background:var(--snow)}
+.kit-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);border-bottom:1px solid var(--rule)}
+.kit-row.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.kit-row>*{padding:30px clamp(20px,3.5vw,44px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.kit-row>*+*{border-left:1px solid var(--rule)}
+@media (max-width:820px){.kit-row,.kit-row.even{grid-template-columns:minmax(0,1fr)}.kit-row>*+*{border-left:0;border-top:1px solid var(--rule)}}
+.kit-hero{padding:clamp(32px,5vw,52px) clamp(20px,3.5vw,44px) 44px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:26px}
+.kit-hero .row{display:flex;gap:20px 44px;align-items:flex-end;flex-wrap:wrap}
+.k-label{font-family:var(--mono);font-size:10.5px;color:var(--trail-ink);text-transform:uppercase;letter-spacing:.12em;margin:0}
+.k-sub{font-family:var(--mono);font-size:10.5px;color:var(--contour-ink);margin:0 0 6px}
+.k-note{font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.lockups{display:flex;gap:14px;flex-wrap:wrap}
+.lockup{flex:1 1 200px;display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--rule-soft)}
+.lockup.dk{background:var(--lake);border-color:var(--lake);color:var(--snow)}
+.lockup img{width:32px;height:32px}
+.lockup b{font-size:19px;letter-spacing:-.02em}
+.fav{display:flex;align-items:flex-end;gap:22px}
+.fav figure{margin:0;display:flex;flex-direction:column;gap:8px;align-items:center;font-family:var(--mono);font-size:10px;color:var(--ink-2)}
+.palette{display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr .8fr}
+.palette div{padding:18px 14px 52px;font-family:var(--mono);font-size:11px;line-height:1.6}
+.palette span{opacity:.75}
+@media (max-width:720px){.palette{grid-template-columns:repeat(2,minmax(0,1fr))}.palette div:first-child{grid-column:1/-1}}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--rule)}
+.grid3 div{height:52px;display:grid;place-items:center;font-family:var(--mono);font-size:10.5px;color:var(--contour-ink)}
+.grid3 div+div{border-left:1px solid var(--rule)}
+.sample-term{background:var(--lake);padding:18px 20px;font-family:var(--mono);font-size:12.5px;line-height:1.75;overflow-x:auto;white-space:nowrap}
+.assets{display:flex;flex-wrap:wrap;gap:10px}
+.kit-foot{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;padding:16px clamp(20px,3.5vw,44px)}
+</style>
+</head>
+<body>
+<div class="site">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+    <button class="menu-btn" type="button" aria-controls="sy-nav" aria-expanded="false"><span class="burger" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    <nav class="nav-links" id="sy-nav" aria-label="Main">
+      <a class="nav-link" href="index.html#rollup">The rollup</a><a class="nav-link" href="modules.html">Modules</a><a class="nav-link" href="api.html">API</a><a class="nav-link" href="index.html#trust">Provenance</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <button class="btn solid btn-sm btn-cmd nav-cta" type="button" data-copy="install" aria-label="Copy install command: npx -y swissyphus"><span class="prompt">$</span>npx -y swissyphus</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="hatch band">
+<div class="wrap">
+<div class="kit">
+
+  <div class="kit-hero">
+    <p class="k-label">Brand kit &middot; v1.0 &middot; Carte Nationale</p>
+    <h1 class="display" style="font-size:clamp(34px,5.4vw,58px);line-height:.99">We roll the boulder so your agent <span class="accent">doesn&rsquo;t have to.</span></h1>
+    <div class="row">
+      <p class="lead" style="max-width:480px;font-size:15px">The Swiss public-data rollup for AI agents. Cartographic precision, gridded Swiss typography, and a myth for a mascot: <span data-count="sources">66</span> public sources, one server, every answer cited.</p>
+      <span class="mono" style="margin-left:auto;font-size:12px;border:1px solid var(--lake);padding:10px 16px">npx -y swissyphus</span>
+    </div>
+  </div>
+
+  <div class="kit-row">
+    <div>
+      <p class="k-label">01 &mdash; Mark &amp; lockups</p>
+      <div class="lockups">
+        <div class="lockup"><img src="assets/img/logo.svg" alt=""><b>swissyphus</b></div>
+        <div class="lockup dk"><img src="assets/img/logo-dark.svg" alt=""><b>swissyphus</b></div>
+      </div>
+      <p class="k-note">The boulder on the slope. The circle never touches the incline: the work is never done. The slope sits at the steepness where avalanches start.</p>
+    </div>
+    <div>
+      <p class="k-label">02 &mdash; Favicon scale</p>
+      <div class="fav">
+        <figure><img src="assets/img/icon.svg" width="64" height="64" alt="Swissyphus icon at 64 pixels"><figcaption>64px</figcaption></figure>
+        <figure><img src="assets/img/icon.svg" width="32" height="32" alt="Swissyphus icon at 32 pixels"><figcaption>32px</figcaption></figure>
+        <figure><img src="assets/img/icon.svg" width="16" height="16" alt="Swissyphus icon at 16 pixels"><figcaption>16px</figcaption></figure>
+      </div>
+      <p class="k-note">On dark tiles the slope shifts to Glacier so the boulder stays the only warm pixel on screen.</p>
+    </div>
+  </div>
+
+  <div style="border-bottom:1px solid var(--rule)">
+    <p class="k-label" style="padding:22px clamp(20px,3.5vw,44px) 14px">03 &mdash; Colour</p>
+    <div class="palette">
+      <div style="background:#123c4d;color:#eef3f2">Lake Deep<br>#123C4D<br><span>ink &middot; surfaces &middot; 40%</span></div>
+      <div style="background:#1f7a8c;color:#eef3f2">Contour<br>#1F7A8C<br><span>lines &middot; links &middot; 20%</span></div>
+      <div style="background:#8fc1c4;color:#123c4d">Glacier<br>#8FC1C4<br><span>fills &middot; 10%</span></div>
+      <div style="background:#eef3f2;color:#123c4d;border-top:1px solid var(--rule-soft)">Snowfield<br>#EEF3F2<br><span>paper &middot; 25%</span></div>
+      <div style="background:#d97b4f;color:#0b2733">Trail Marker<br>#D97B4F<br><span>accent only &middot; 5%</span></div>
+    </div>
+  </div>
+
+  <div class="kit-row even">
+    <div>
+      <p class="k-label">04 &mdash; Typography</p>
+      <div><p class="k-sub">DISPLAY &mdash; ARCHIVO EXPANDED 800 &middot; UPPERCASE</p><p class="display" style="font-size:38px;letter-spacing:-.02em">Aa Gg Rr 0147</p></div>
+      <div><p class="k-sub">BODY &mdash; ARCHIVO 400/600</p><p style="font-size:15px;line-height:1.55"><span data-count="tools">151</span> tools, zero API keys. <strong>Every answer cited.</strong></p></div>
+      <div><p class="k-sub">DATA &amp; CODE &mdash; IBM PLEX MONO</p><p class="mono" style="font-size:14px">2&rsquo;600&rsquo;000 / 1&rsquo;200&rsquo;000 (LV95)</p></div>
+    </div>
+    <div>
+      <p class="k-label">05 &mdash; Grid discipline</p>
+      <p class="k-note" style="font-size:13px">Everything sits on a visible 1px rule grid in Lake Deep. Columns divide the page like map sheets; no soft shadows, no rounded cards: the border is the design. Radius is reserved for pills and the favicon tile.</p>
+      <div class="grid3"><div>col 1</div><div>col 2</div><div>col 3</div></div>
+      <p class="mono" style="font-size:10.5px;color:var(--ink-2)">Baseline 8px &middot; gutters 44px &middot; rules #123C4D 1px</p>
+    </div>
+  </div>
+
+  <div class="kit-row">
+    <div>
+      <p class="k-label">06 &mdash; UI language</p>
+      <div class="sample-term"><span style="color:#e8956c">$</span> <span style="color:#eef3f2">npx -y swissyphus --preset outdoor</span><br><span style="color:#8fc1c4">&check; 14 modules loaded &middot; SLF, MeteoSwiss, FOEN&hellip;</span><br><span style="color:#e8956c">&rarr; get_avalanche_danger_at</span> <span style="color:#eef3f2">46.8, 9.8</span><br><span style="color:#8fc1c4">level 3 &mdash; considerable &middot; &copy; SLF</span></div>
+      <div class="row-wrap"><span class="pill">transport</span><span class="pill">hydrology</span><span class="pill">law</span><span class="pill on">avalanche</span></div>
+      <div class="row-wrap"><a class="btn solid" href="setup.html">Get started</a><a class="btn" href="https://github.com/cwellbournewood/swissyphus#readme">Read the docs</a></div>
+    </div>
+    <div>
+      <p class="k-label">07 &mdash; Voice</p>
+      <p style="font-size:13.5px;line-height:1.65"><strong>Declarative, exact, wry.</strong> Coordinates over adjectives; the myth carries the humour so the docs don&rsquo;t have to.</p>
+      <p class="quote">&ldquo;One must imagine the API happy.&rdquo;</p>
+      <p class="quote">&ldquo;Every answer cited, down to the exact upstream request.&rdquo;</p>
+      <p class="quote">&ldquo;No signup. No keys. Under 60 seconds to first result.&rdquo;</p>
+    </div>
+  </div>
+
+  <div class="kit-row even">
+    <div>
+      <p class="k-label">08 &mdash; Files</p>
+      <div class="assets">
+        <a class="btn btn-sm" href="assets/img/logo.svg" download>logo.svg</a>
+        <a class="btn btn-sm" href="assets/img/logo-dark.svg" download>logo-dark.svg</a>
+        <a class="btn btn-sm" href="assets/img/icon.svg" download>icon.svg</a>
+        <a class="btn btn-sm" href="assets/img/icon.png" download>icon.png</a>
+        <a class="btn btn-sm" href="assets/img/social-preview.png" download>social-preview.png</a>
+      </div>
+    </div>
+    <div>
+      <p class="k-label">09 &mdash; Usage</p>
+      <p class="k-note" style="font-size:13px">Lower-case wordmark, always &ldquo;swissyphus&rdquo; in the lockup and &ldquo;Swissyphus&rdquo; in running text. Never pair the mark with the Swiss cross or federal insignia: Swissyphus is independent and not endorsed by the Confederation.</p>
+    </div>
+  </div>
+
+  <div class="kit-foot">
+    <span class="mono" style="font-size:10.5px;color:var(--ink-2)">Swissyphus &middot; Carte Nationale system</span>
+    <span class="display" style="font-size:11px;letter-spacing:.08em">1:25&rsquo;000 &middot; CH &middot; 2026</span>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Product</p>
+      <a href="modules.html">Modules</a>
+      <a href="api.html">API reference</a>
+      <a href="setup.html">Setup</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/docs/TOOLS.md">Tool catalogue</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Trust</p>
+      <a href="index.html#trust">Provenance</a>
+      <a href="api.html#errors">Errors</a>
+      <a href="api.html#tiers">Keys &amp; tiers</a>
+      <a href="setup.html#doctor">Source health</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/PRIVACY.md">Privacy</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Project</p>
+      <a href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <a href="https://www.npmjs.com/package/swissyphus">npm</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="brand.html">Brand kit</a>
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <span class="mono">MIT &middot; the data keeps its own licences &middot; independent, not endorsed by the Swiss Confederation</span>
+    <span class="display foot-tag">Uphill, daily &middot; CH &middot; 2026</span>
+  </div>
+</footer>
+</div>
+<script src="assets/js/catalogue.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

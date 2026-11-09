@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup · Swissyphus</title>
+<meta name="description" content="Install Swissyphus in Claude Code, Claude Desktop, Cursor, VS Code or Docker in under a minute. No signup, no API keys.">
+<meta name="theme-color" content="#123c4d">
+<meta property="og:title" content="Swissyphus">
+<meta property="og:description" content="66 Swiss public sources in one MCP server and REST API. 151 tools, zero API keys, every answer cited.">
+<meta property="og:image" content="assets/img/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+.sh{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px 56px;align-items:end;padding-block:clamp(48px,7vw,88px) clamp(36px,5vw,56px)}
+@media (max-width:900px){.sh{grid-template-columns:minmax(0,1fr)}}
+.qs{padding:26px 24px 26px;display:flex;flex-direction:column;gap:12px}
+.qs-n{font-variation-settings:'wdth' 118;font-weight:800;font-size:44px;line-height:1;color:var(--trail-ink);letter-spacing:-.03em}
+.qs .cmd{margin-top:auto}
+.cfg{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
+@media (max-width:900px){.cfg{grid-template-columns:minmax(0,1fr)}}
+.pr{grid-template-columns:minmax(0,190px) minmax(0,1fr) auto auto}
+.pr .n{font-family:var(--mono);font-size:13px;font-weight:600}
+.pr .d{font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.pr .c2{font-family:var(--mono);font-size:11px;color:var(--contour-ink);white-space:nowrap}
+.pr .copy{border-color:var(--rule-soft);color:var(--lake)}
+.pr .copy:hover{background:var(--snow-3);color:var(--lake)}
+@media (max-width:640px){.pr{grid-template-columns:minmax(0,1fr) auto}.pr .d{grid-column:1/-1;grid-row:2}.pr .c2{display:none}}
+.keys{grid-template-columns:minmax(0,260px) minmax(0,1fr)}
+.keys .n{font-family:var(--mono);font-size:12.5px;font-weight:600;overflow-wrap:anywhere}
+.keys .d{font-size:13.5px;color:var(--ink-2);line-height:1.45}
+@media (max-width:640px){.keys{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="site">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+    <button class="menu-btn" type="button" aria-controls="sy-nav" aria-expanded="false"><span class="burger" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    <nav class="nav-links" id="sy-nav" aria-label="Main">
+      <a class="nav-link" href="index.html#rollup">The rollup</a><a class="nav-link" href="modules.html">Modules</a><a class="nav-link" href="api.html">API</a><a class="nav-link" href="index.html#trust">Provenance</a><a class="nav-link on" aria-current="page" href="setup.html">Setup</a><a class="nav-link" href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <button class="btn solid btn-sm btn-cmd nav-cta" type="button" data-copy="install" aria-label="Copy install command: npx -y swissyphus"><span class="prompt">$</span>npx -y swissyphus</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="band hatch" aria-labelledby="setup-title">
+  <div class="wrap sh">
+    <div class="stack" style="gap:22px">
+      <p class="eyebrow">Setup &middot; under 60 seconds to first result</p>
+      <h1 class="display d2" id="setup-title">Roll it into<br><span class="accent">your client.</span></h1>
+    </div>
+    <div class="stack">
+      <p class="lead">Swissyphus runs locally through <span class="c">npx</span>: nothing to install globally, nothing to sign up for, no keys. You need Node.js 20 or newer. Pick your client below; the config is the same shape everywhere.</p>
+      <div class="row-wrap"><button class="btn solid btn-cmd" type="button" data-copy="install"><span class="prompt">$</span>npx -y swissyphus<span class="hint">copy</span></button></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="qs-title">
+  <div class="wrap sec-sm">
+    <h2 class="display d3" id="qs-title" style="margin-bottom:28px">Quick start</h2>
+    <div class="sheet g-3">
+      <div class="qs">
+        <span class="qs-n">01</span>
+        <h3 class="display d4">Add it to your client</h3>
+        <p class="body">Register it once with Claude Code, or paste the config below into any MCP client.</p>
+        <div class="cmd"><span class="p">$</span><span class="x" id="qs1">claude mcp add --scope user swissyphus -- npx -y swissyphus</span><button class="copy" type="button" data-copy-from="#qs1">Copy</button></div>
+      </div>
+      <div class="qs">
+        <span class="qs-n">02</span>
+        <h3 class="display d4">Check the sources</h3>
+        <p class="body">The doctor probes every upstream source and prints its status and latency.</p>
+        <div class="cmd"><span class="p">$</span><span class="x" id="qs2">npx -y swissyphus doctor</span><button class="copy" type="button" data-copy-from="#qs2">Copy</button></div>
+      </div>
+      <div class="qs">
+        <span class="qs-n">03</span>
+        <h3 class="display d4">Ask Switzerland</h3>
+        <p class="body">Your agent now sees all <span data-count="tools">151</span> tools, plus three ready-made prompts.</p>
+        <div class="cmd"><span class="p">&rsaquo;</span><span class="x">Next train from Bern to Lugano?</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="clients" aria-labelledby="cfg-title">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <div class="stack">
+        <p class="eyebrow cool">Client config</p>
+        <h2 class="display d2" id="cfg-title">Select your tool</h2>
+      </div>
+      <p class="lead">Restart the client after saving. Swissyphus appears with all <span data-count="tools">151</span> tools ready.</p>
+    </div>
+    <div class="tabs" id="client-tabs" aria-label="Client"></div>
+    <div class="cfg">
+      <div class="codebox">
+        <div class="codebox-bar"><span id="client-file"></span><span class="sp"></span><button class="copy" type="button" data-copy-from="#client-config">Copy</button></div>
+        <pre class="term" id="client-config"></pre>
+      </div>
+      <div class="stack">
+        <p class="eyebrow cool"><span id="client-name"></span> &middot; notes</p>
+        <p class="body" id="client-note"></p>
+        <div id="client-one" class="stack-sm">
+          <p class="eyebrow cool" style="margin-top:8px">Or, one line</p>
+          <div class="cmd"><span class="p">$</span><span class="x" id="client-oneliner"></span><button class="copy" type="button" data-copy-from="#client-oneliner">Copy</button></div>
+        </div>
+        <div id="client-link"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="presets" aria-labelledby="pr-title">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <div class="stack">
+        <p class="eyebrow">Presets</p>
+        <h2 class="display d2" id="pr-title">Roll up only<br><span class="accent">what you need.</span></h2>
+      </div>
+      <p class="lead"><span data-count="tools">151</span> tool definitions cost about 36k tokens of context. Add <span class="c">--preset</span> or <span class="c">--modules</span> to any command; they combine. Or build a custom set on the <a class="link" href="modules.html">modules page</a>.</p>
+    </div>
+    <div class="rows" id="preset-rows"></div>
+<pre class="term" style="margin-top:24px"><span class="t-acc">$</span> npx -y swissyphus --modules transport,weather     <span class="t-mute"># exactly these</span>
+<span class="t-acc">$</span> npx -y swissyphus --preset legal --modules fx     <span class="t-mute"># combinable</span>
+<span class="t-acc">$</span> npx -y swissyphus --list-modules                  <span class="t-mute"># everything, with tool counts</span></pre>
+  </div>
+</section>
+
+<section class="band hatch" id="keys" aria-labelledby="keys-title">
+  <div class="wrap sec-sm">
+    <div class="sec-head">
+      <div class="stack">
+        <p class="eyebrow">Optional keys</p>
+        <h2 class="display d3" id="keys-title">None needed. Two add depth.</h2>
+      </div>
+      <p class="lead">Without them, those tools explain how to get one. Pass them through your client&rsquo;s <span class="c">env</span> block.</p>
+    </div>
+    <div class="rows" style="background:var(--snow)">
+      <div class="r keys"><span class="n">OPENTRANSPORTDATA_API_KEY</span><span class="d">Unlocks <span class="c">get_transport_disruptions</span> and <span class="c">get_realtime_delays</span>. Free at opentransportdata.swiss.</span></div>
+      <div class="r keys"><span class="n">ZEFIX_USER / ZEFIX_PASS</span><span class="d">The official ZefixPublicREST API for <span class="c">companies</span>; a keyless back-end is used otherwise. Issued by the Federal Office of Justice.</span></div>
+    </div>
+<pre class="term" style="margin-top:20px">{ <span class="t-snow">"command"</span>: <span class="t-acc">"npx"</span>, <span class="t-snow">"args"</span>: [<span class="t-acc">"-y"</span>, <span class="t-acc">"swissyphus"</span>], <span class="t-snow">"env"</span>: { <span class="t-snow">"OPENTRANSPORTDATA_API_KEY"</span>: <span class="t-acc">"…"</span> } }</pre>
+  </div>
+</section>
+
+<section class="band" id="http" aria-labelledby="http-title">
+  <div class="split">
+    <div class="stack">
+      <p class="eyebrow">HTTP &amp; Docker</p>
+      <h2 class="display d3" id="http-title">Serve REST and remote MCP</h2>
+      <p class="body">The same tools over HTTP, generated from the same schemas. Images are multi-arch (amd64, arm64) on Node 24 LTS Alpine, run as a non-root user with a <span class="c">HEALTHCHECK</span> against <span class="c">/v1/health</span>, and shut down gracefully on SIGTERM.</p>
+      <p class="small">Keys and the last-known-good store live under <span class="c">/app/data</span>. Set <span class="c">ADMIN_TOKEN</span> (32+ characters) to enable <span class="c">/v1/admin/*</span>. Production setup with automatic TLS: <a class="link" href="https://github.com/cwellbournewood/swissyphus/blob/main/deploy/README.md">deploy/</a>.</p>
+    </div>
+    <div class="stack" style="justify-content:center">
+      <div class="codebox">
+        <div class="codebox-bar"><span>TERMINAL</span><span class="sp"></span><button class="copy" type="button" data-copy-from="#docker" data-copy-label="Copied · Docker commands">Copy</button></div>
+<pre class="term" id="docker">npx -y swissyphus --http --port 8000                                  # REST + remote MCP
+
+docker run -p 8000:8000 ghcr.io/cwellbournewood/swissyphus             # HTTP
+docker run -i --rm ghcr.io/cwellbournewood/swissyphus --stdio          # MCP stdio
+docker run -p 8000:8000 ghcr.io/cwellbournewood/swissyphus --http --preset hosted</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="doctor" aria-labelledby="doc-title">
+  <div class="split">
+    <div class="stack">
+      <p class="eyebrow">Verify</p>
+      <h2 class="display d3" id="doc-title">Is it healthy?</h2>
+      <p class="body">The doctor probes every upstream source and prints its status and latency. Agents get the same view from <span class="c">check_source_health</span>, so when a source is down they see it instead of guessing. A nightly canary runs against every live source too.</p>
+<pre class="term"><span class="t-acc">$</span> npx -y swissyphus doctor
+<span class="t-ok">&check;</span> <span class="t-mute">status and latency for every upstream source</span>
+<span class="t-acc">$</span> npx -y swissyphus --version</pre>
+    </div>
+    <div class="stack">
+      <p class="eyebrow">Troubleshooting</p>
+      <div class="faq">
+        <details><summary>CONNECTION_CLOSED or &ldquo;failed to reconnect&rdquo;</summary><p class="ans">The server exited before the MCP handshake. Most often the client runs an older Node than your shell: check the <span class="c">node</span> on the client&rsquo;s PATH is 20 or newer.</p></details>
+        <details><summary>Corporate proxy or TLS inspection</summary><p class="ans">Set <span class="c">NODE_EXTRA_CA_CERTS</span> to your CA bundle in the server&rsquo;s <span class="c">env</span>.</p></details>
+        <details><summary>A tool says the source is unavailable</summary><p class="ans">That&rsquo;s upstream, not you. Run the doctor. When it has one, Swissyphus serves the last good answer, marked <span class="c">cache_status: "stale"</span>.</p></details>
+        <details><summary>The first sanctions search says the list is loading</summary><p class="ans">The SECO list is a 43&nbsp;MB download from a slow server. Ask again in a minute; it is then cached for 6 hours. Hosted deployments load it at start-up.</p></details>
+        <details><summary>Too many tools in context</summary><p class="ans">Use a preset or an explicit <span class="c">--modules</span> list. <span class="c">--preset discovery</span> keeps 7 tools loaded and still reaches everything through <span class="c">call_tool</span>.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band night" aria-label="Next">
+  <div class="wrap cta">
+    <h2 class="display d2">That&rsquo;s the whole install. <span class="accent">Now roll.</span></h2>
+    <div class="cta-act"><a class="btn trail" href="modules.html">Browse the modules &rarr;</a><a class="btn" href="api.html">API reference</a></div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Product</p>
+      <a href="modules.html">Modules</a>
+      <a href="api.html">API reference</a>
+      <a href="setup.html">Setup</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/docs/TOOLS.md">Tool catalogue</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Trust</p>
+      <a href="index.html#trust">Provenance</a>
+      <a href="api.html#errors">Errors</a>
+      <a href="api.html#tiers">Keys &amp; tiers</a>
+      <a href="setup.html#doctor">Source health</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/PRIVACY.md">Privacy</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Project</p>
+      <a href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <a href="https://www.npmjs.com/package/swissyphus">npm</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="brand.html">Brand kit</a>
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <span class="mono">MIT &middot; the data keeps its own licences &middot; independent, not endorsed by the Swiss Confederation</span>
+    <span class="display foot-tag">Uphill, daily &middot; CH &middot; 2026</span>
+  </div>
+</footer>
+</div>
+<script src="assets/js/catalogue.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/setup.js"></script>
+</body>
+</html>

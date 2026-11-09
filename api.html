@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API reference · Swissyphus</title>
+<meta name="description" content="The Swissyphus REST API and remote MCP endpoint: the same tools, the same envelope, an OpenAPI 3.1 spec, RFC 9457 errors and API keys with rate limits.">
+<meta name="theme-color" content="#123c4d">
+<meta property="og:title" content="Swissyphus">
+<meta property="og:description" content="66 Swiss public sources in one MCP server and REST API. 151 tools, zero API keys, every answer cited.">
+<meta property="og:image" content="assets/img/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+.ah{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px 56px;align-items:end;padding-block:clamp(48px,7vw,88px) clamp(36px,5vw,60px)}
+@media (max-width:900px){.ah{grid-template-columns:minmax(0,1fr)}}
+.kv{display:flex;flex-direction:column;gap:8px}
+.pg{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr) minmax(0,1fr);border:1px solid var(--rule);background:var(--snow);margin-top:24px}
+.pg-list{border-right:1px solid var(--rule);display:flex;flex-direction:column}
+.pg-item{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--rule-soft);padding:12px 16px;cursor:pointer;min-height:56px}
+.pg-item:hover{background:var(--snow-2)}
+.pg-item .fn{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--lake);overflow-wrap:anywhere}
+.pg-item .md{font-family:var(--mono);font-size:10.5px;color:var(--ink-2);letter-spacing:.04em}
+.pg-item.on{background:var(--lake)}
+.pg-item.on .fn{color:var(--snow)}
+.pg-item.on .md{color:var(--glacier)}
+.pg-req,.pg-res{display:flex;flex-direction:column;min-width:0;background:var(--lake);color:var(--snow)}
+.pg-req{border-right:1px solid var(--rule-dark)}
+.pg-tabs{display:flex;border-bottom:1px solid var(--rule-dark);min-height:44px;align-items:stretch}
+.pg-tab{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;background:transparent;border:0;border-right:1px solid var(--rule-dark);color:var(--glacier);padding:0 14px;cursor:pointer;text-transform:uppercase;display:inline-flex;align-items:center}
+.pg-tab:hover{background:rgba(238,243,242,.06)}
+.pg-tab.on{color:var(--night);background:var(--trail);font-weight:600}
+.pg-tabs .sp{flex:1}
+.pg-tabs .copy{align-self:center;margin-right:8px}
+.pg .term{font-size:12.5px;flex:1;background:transparent}
+.pg-desc{padding:12px 20px;border-top:1px solid var(--rule-dark);font-size:13px;line-height:1.5;color:var(--glacier)}
+@media (max-width:1080px){.pg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.pg-list{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--rule)}.pg-item{flex:1 1 180px;border-right:1px solid var(--rule-soft)}}
+@media (max-width:720px){.pg{grid-template-columns:minmax(0,1fr)}.pg-req{border-right:0;border-bottom:1px solid var(--rule-dark)}}
+.ep{grid-template-columns:64px minmax(0,1.2fr) minmax(0,1.6fr)}
+.ep .m{font-family:var(--mono);font-size:11.5px;font-weight:600}
+.ep .m.get{color:var(--contour-ink)} .ep .m.post{color:var(--trail-ink)} .ep .m.del{color:#8a3a1c}
+.ep .p{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.ep .d{font-size:13.5px;color:var(--ink-2);line-height:1.45}
+@media (max-width:640px){.ep{grid-template-columns:52px minmax(0,1fr)}.ep .d{grid-column:2}}
+.er{grid-template-columns:56px minmax(0,1fr)}
+.er .code{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--trail-ink)}
+.er .ty{font-family:var(--mono);font-size:12.5px}
+.er .ds{font-size:13px;color:var(--ink-2);margin-top:2px;line-height:1.45}
+.tiers{width:100%;border-collapse:collapse;min-width:620px}
+.tiers th,.tiers td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--rule-dark);vertical-align:top}
+.tiers th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--glacier);font-weight:500}
+.tiers td{font-size:14px;color:var(--snow)}
+.tiers td.mono{font-size:12.5px;color:var(--glacier)}
+.tiers .t{font-variation-settings:'wdth' 118;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:16px}
+.tiers tr.hl td{background:rgba(217,123,79,.1)}
+.free-tag{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--night);background:var(--trail);padding:6px 10px;letter-spacing:.06em;width:fit-content}
+.conv{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px}
+.conv .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--trail-ink)}
+.conv .v{font-size:13.5px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="site">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+    <button class="menu-btn" type="button" aria-controls="sy-nav" aria-expanded="false"><span class="burger" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+    <nav class="nav-links" id="sy-nav" aria-label="Main">
+      <a class="nav-link" href="index.html#rollup">The rollup</a><a class="nav-link" href="modules.html">Modules</a><a class="nav-link on" aria-current="page" href="api.html">API</a><a class="nav-link" href="index.html#trust">Provenance</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <button class="btn solid btn-sm btn-cmd nav-cta" type="button" data-copy="install" aria-label="Copy install command: npx -y swissyphus"><span class="prompt">$</span>npx -y swissyphus</button>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="band dark hatch" aria-labelledby="api-title">
+  <div class="wrap ah">
+    <div class="stack" style="gap:22px">
+      <p class="eyebrow cool">API reference &middot; v1</p>
+      <h1 class="display d2" id="api-title">MCP and REST.<br><span class="cool">Same <span data-count="tools">151</span> tools.</span></h1>
+      <p class="lead">The server that runs locally over stdio also serves HTTP: a REST API, an OpenAPI 3.1 spec and a remote MCP endpoint, all generated from the same tool schemas. Typed JSON, RFC&nbsp;9457 errors, CORS on, rate-limit headers everywhere.</p>
+    </div>
+    <div class="stack">
+      <div class="kv"><p class="eyebrow cool">Run it</p><div class="cmd"><span class="p">$</span><span class="x" id="run-http">npx -y swissyphus --http --port 8000</span><button class="copy" type="button" data-copy-from="#run-http">Copy</button></div></div>
+      <div class="kv"><p class="eyebrow cool">Base URL</p><div class="cmd"><span class="x" id="base">http://localhost:8000/v1</span><button class="copy" type="button" data-copy-from="#base">Copy</button></div></div>
+      <div class="kv"><p class="eyebrow cool">Remote MCP</p><div class="cmd"><span class="x">POST /mcp &middot; Streamable HTTP, stateless</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="playground" aria-labelledby="pg-title">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <div class="stack">
+        <p class="eyebrow">Playground</p>
+        <h2 class="display d2" id="pg-title">Pick a tool.<br><span class="accent">Call it any way.</span></h2>
+      </div>
+      <p class="lead">The same call as cURL, MCP JSON-RPC or fetch, next to the envelope it returns. Values are illustrative; the shape is exact.</p>
+    </div>
+    <div class="pg">
+      <div class="pg-list" id="pg-list" aria-label="Tools"></div>
+      <div class="pg-req">
+        <div class="pg-tabs"><span id="pg-langs" style="display:flex"></span><span class="sp"></span><button class="copy" type="button" data-copy-from="#pg-req" data-copy-label="Copied · request">Copy</button></div>
+        <pre class="term" id="pg-req"></pre>
+        <p class="pg-desc" id="pg-desc"></p>
+      </div>
+      <div class="pg-res">
+        <div class="pg-tabs"><span class="pg-tab on" style="cursor:default">200 &middot; application/json</span><span class="sp"></span><button class="copy" type="button" data-copy-from="#pg-res" data-copy-label="Copied · response">Copy</button></div>
+        <pre class="term" id="pg-res"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band hatch" id="endpoints" aria-labelledby="ep-title">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <div class="stack">
+        <p class="eyebrow">Endpoints</p>
+        <h2 class="display d3" id="ep-title">Core routes</h2>
+      </div>
+      <p class="lead">Every tool maps to a predictable path. GET with query parameters, POST with a JSON body for anything more complex.</p>
+    </div>
+    <div class="rows" style="background:var(--snow)">
+      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/tools</span><span class="d">Tool catalogue with input schemas.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/tools/{name}?&hellip;</span><span class="d">Call any tool with query parameters.</span></div>
+      <div class="r ep"><span class="m post">POST</span><span class="p">/v1/tools/{name}</span><span class="d">Call a tool with a JSON body.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/sources</span><span class="d">Licence and source register for all <span data-count="sources">66</span> sources.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/health</span><span class="d">Liveness.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/health/sources</span><span class="d">Upstream source health (cached snapshot).</span></div>
+      <div class="r ep"><span class="m post">POST</span><span class="p">/v1/keys</span><span class="d">Create a free API key from an email address. Shown once.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/usage</span><span class="d">Your metered usage (with a key).</span></div>
+      <div class="r ep"><span class="m del">DEL</span><span class="p">/v1/keys</span><span class="d">Permanent erasure of the key, email and usage history.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/openapi.json</span><span class="d">OpenAPI 3.1, including the Envelope schema.</span></div>
+      <div class="r ep"><span class="m post">POST</span><span class="p">/mcp</span><span class="d">Remote MCP over Streamable HTTP, stateless.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="errors" aria-labelledby="err-title">
+  <div class="split">
+    <div class="stack">
+      <p class="eyebrow">Response envelope</p>
+      <h2 class="display d3" id="err-title">Data, plus where it came from</h2>
+      <p class="body">Every successful response carries a <span class="c">source</span> object (name, operator, URL, licence, attribution), the retrieval time, the publisher&rsquo;s own timestamp, the cache status and the upstream requests behind the answer. MCP and REST return the same envelope.</p>
+<pre class="term">{
+  <span class="t-snow">"data"</span>: { &hellip; },
+  <span class="t-snow">"source"</span>: {
+    <span class="t-snow">"name"</span>: <span class="t-acc">"…"</span>, <span class="t-snow">"operator"</span>: <span class="t-acc">"…"</span>, <span class="t-snow">"url"</span>: <span class="t-acc">"…"</span>,
+    <span class="t-snow">"licence"</span>: <span class="t-acc">"…"</span>, <span class="t-snow">"attribution"</span>: <span class="t-acc">"© …"</span>
+  },
+  <span class="t-snow">"retrieved_at"</span>: <span class="t-acc">"ISO 8601"</span>,
+  <span class="t-snow">"data_as_of"</span>: <span class="t-acc">"publisher timestamp | null"</span>,
+  <span class="t-snow">"cache_status"</span>: <span class="t-acc">"hit | miss | stale | computed"</span>,
+  <span class="t-snow">"provenance"</span>: { <span class="t-snow">"upstream"</span>: [ { <span class="t-snow">"url"</span>, <span class="t-snow">"cache_status"</span>, <span class="t-snow">"retrieved_at"</span> } ] }
+}</pre>
+    </div>
+    <div class="stack">
+      <p class="eyebrow">Errors &middot; RFC 9457</p>
+      <h2 class="display d3">Problems you can switch on</h2>
+      <p class="body">Returned as <span class="c">application/problem+json</span>.</p>
+      <div class="rows">
+        <div class="r er"><span class="code">400</span><div><div class="ty">invalid parameters</div><div class="ds">A parameter failed schema validation.</div></div></div>
+        <div class="r er"><span class="code">404</span><div><div class="ty">no results</div><div class="ds">Unknown tool, or the source has no data for the query.</div></div></div>
+        <div class="r er"><span class="code">413</span><div><div class="ty">body too large</div><div class="ds">Over <span class="c">SWISSYPHUS_MAX_BODY_BYTES</span> (1&nbsp;MiB by default).</div></div></div>
+        <div class="r er"><span class="code">429</span><div><div class="ty">rate limited</div><div class="ds">Over your tier&rsquo;s limit; the RateLimit-* headers say when to retry.</div></div></div>
+        <div class="r er"><span class="code">503</span><div><div class="ty">source unavailable</div><div class="ds">An upstream source is down and no last good answer exists. See <span class="c">/v1/health/sources</span>.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="tiers" aria-labelledby="tiers-title">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <div class="stack">
+        <p class="eyebrow">Keys &amp; tiers</p>
+        <h2 class="display d2" id="tiers-title">Local: no key, ever.<br><span class="cool">Hosted: tiered.</span></h2>
+        <span class="free-tag">METERING ON &middot; BILLING IS UP TO THE OPERATOR</span>
+      </div>
+      <p class="lead">An HTTP deployment enforces per-IP limits for anonymous callers and per-key limits and quotas for key holders. Keys work on REST and on <span class="c">POST /mcp</span>, as <span class="c">Authorization: Bearer</span>, <span class="c">X-API-Key</span> or <span class="c">?api_key=</span>, and are stored only as a SHA-256 hash.</p>
+    </div>
+    <div class="scroll-x" style="border:1px solid var(--rule-dark)">
+      <table class="tiers">
+        <thead><tr><th scope="col">Tier</th><th scope="col">Rate limit</th><th scope="col">Monthly quota</th><th scope="col">How a caller gets it</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Anonymous</td><td>60 req/min per IP</td><td>&mdash;</td><td>Just call it</td></tr>
+          <tr class="hl"><td class="t">Free</td><td>240 req/min</td><td>50&rsquo;000</td><td class="mono">POST /v1/keys {"email": "you@example.com"}</td></tr>
+          <tr><td class="t">Pro</td><td>1&rsquo;000 req/min</td><td>1&rsquo;000&rsquo;000</td><td>Promoted by the operator (<span class="c">/v1/admin</span>)</td></tr>
+          <tr><td class="t">Enterprise</td><td>Unlimited</td><td>Unlimited</td><td>Set by the operator</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="codebox" style="margin-top:24px">
+      <div class="codebox-bar"><span>GET A KEY &middot; USE IT &middot; CHECK USAGE</span><span class="sp"></span><button class="copy" type="button" data-copy-from="#keys-code" data-copy-label="Copied · key commands">Copy</button></div>
+<pre class="term" id="keys-code">curl -X POST https://your-host/v1/keys -d '{"email":"you@example.com"}'        # → sy_live_… (shown once)
+curl -H "Authorization: Bearer sy_live_…" "https://your-host/v1/tools/get_weather?plz=8001"
+curl -H "Authorization: Bearer sy_live_…" https://your-host/v1/usage
+curl -X DELETE -H "Authorization: Bearer sy_live_…" https://your-host/v1/keys  # permanent erasure</pre>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="conv-title">
+  <div class="wrap sec">
+    <h2 class="display d3" id="conv-title" style="margin-bottom:28px">Conventions</h2>
+    <div class="sheet g-4">
+      <div class="conv"><span class="k">AUTH</span><span class="v">None locally. Hosted tiers take a Bearer token, X-API-Key or ?api_key=.</span></div>
+      <div class="conv"><span class="k">RATE LIMITS</span><span class="v">Standard RateLimit-* headers on every response.</span></div>
+      <div class="conv"><span class="k">CACHING</span><span class="v">Per-source TTLs, circuit breakers and a last-known-good store; cache_status says which answer you got.</span></div>
+      <div class="conv"><span class="k">CORS</span><span class="v">Enabled, so you can call it straight from the browser.</span></div>
+      <div class="conv"><span class="k">COORDINATES</span><span class="v">WGS84 and LV95 throughout; coords converts offline with cm accuracy.</span></div>
+      <div class="conv"><span class="k">PRIVACY</span><span class="v">Swiss nFADP: privacy notice, records of processing and breach response ship with the server.</span></div>
+      <div class="conv"><span class="k">SCHEMAS</span><span class="v">One schema per tool generates MCP, REST, OpenAPI and tools.schema.json.</span></div>
+      <div class="conv"><span class="k">VERSIONING</span><span class="v">Semantic versioning. Tool names, parameters, the envelope and REST paths change incompatibly only in a major version.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band night" aria-label="Next">
+  <div class="wrap cta">
+    <h2 class="display d2">Wire it into your client <span class="accent">in one line.</span></h2>
+    <div class="cta-act"><a class="btn trail" href="setup.html">Go to setup &rarr;</a><a class="btn" href="https://github.com/cwellbournewood/swissyphus/blob/main/docs/HOSTING.md">Self-hosting guide</a></div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Product</p>
+      <a href="modules.html">Modules</a>
+      <a href="api.html">API reference</a>
+      <a href="setup.html">Setup</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/docs/TOOLS.md">Tool catalogue</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Trust</p>
+      <a href="index.html#trust">Provenance</a>
+      <a href="api.html#errors">Errors</a>
+      <a href="api.html#tiers">Keys &amp; tiers</a>
+      <a href="setup.html#doctor">Source health</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/PRIVACY.md">Privacy</a>
+    </div>
+    <div class="foot-col">
+      <p class="eyebrow cool">Project</p>
+      <a href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <a href="https://www.npmjs.com/package/swissyphus">npm</a>
+      <a href="https://github.com/cwellbournewood/swissyphus/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="brand.html">Brand kit</a>
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <span class="mono">MIT &middot; the data keeps its own licences &middot; independent, not endorsed by the Swiss Confederation</span>
+    <span class="display foot-tag">Uphill, daily &middot; CH &middot; 2026</span>
+  </div>
+</footer>
+</div>
+<script src="assets/js/catalogue.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/api.js"></script>
+</body>
+</html>
