@@ -59,9 +59,42 @@ The header and footer are repeated in each page; change them in all five.
 
 ## Deploy
 
-`.github/workflows/pages.yml` publishes the repository root to GitHub Pages on every push to
-`main` (enable Pages with source *GitHub Actions* in the repository settings). Any static host
-works too: there is nothing to build.
+`.github/workflows/pages.yml` publishes the site files (pages, `assets/`, `CNAME`, `robots.txt`,
+`sitemap.xml`; not `film/` or `scripts/`) to GitHub Pages on every push to `main`. Any static
+host works too: there is nothing to build.
+
+### Domains
+
+The site lives at **https://swissyphus.ch**; `swissyphus.com` redirects to it. Canonical and
+Open Graph URLs in every page, `CNAME`, `robots.txt` and `sitemap.xml` all assume that host, so
+change them together if it ever moves.
+
+1. **GitHub** (*Settings → Pages*): source *GitHub Actions*, custom domain `swissyphus.ch`, then
+   tick *Enforce HTTPS* once the certificate is issued. Pages on a private repository needs a
+   paid plan; otherwise make the repository public.
+2. **Infomaniak DNS zone of `swissyphus.ch`**: remove the default A/AAAA records that point at
+   Infomaniak's parking page, then add
+
+   | Type | Name | Value |
+   |---|---|---|
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | AAAA | `@` | `2606:50c0:8000::153` |
+   | AAAA | `@` | `2606:50c0:8001::153` |
+   | AAAA | `@` | `2606:50c0:8002::153` |
+   | AAAA | `@` | `2606:50c0:8003::153` |
+   | CNAME | `www` | `cwellbournewood.github.io.` |
+
+   Keep the MX/SPF records if you use Infomaniak mail on the domain.
+3. **`swissyphus.com`**: in Infomaniak's domain manager, add a permanent (301) web redirection
+   of `swissyphus.com` and `www.swissyphus.com` to `https://swissyphus.ch`.
+4. Optional, recommended: verify `swissyphus.ch` under *GitHub → Settings (your account) → Pages*
+   (a TXT record) so nobody else can claim it for their Pages site.
+
+The API server, when deployed (see `deploy/` in the server repo), fits under
+`api.swissyphus.ch`: an A record to the VPS and `DOMAIN=api.swissyphus.ch` for Caddy.
 
 ## Licence
 
