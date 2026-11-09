@@ -66,6 +66,22 @@
 .builder .cmd{flex:1 1 360px;background:rgba(3,20,28,.4);border-color:var(--rule-dark)}
 .builder .btn{border-color:rgba(238,243,242,.45);color:var(--snow)}
 .builder .btn:hover{background:rgba(238,243,242,.1)}
+/* Small or short screens: the pinned toolbar and builder used to cover over two thirds
+   of the viewport. Let the toolbar scroll away, put the themes on one swipeable row,
+   and shrink the builder to a single line. */
+@media (max-width:720px),(max-height:560px){
+  .toolbar{position:static;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .toolbar-in{padding-block:12px;gap:10px}
+  .search{flex-basis:100%;max-width:none}
+  .themes{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .themes::-webkit-scrollbar{display:none}
+  .themes .pill{flex:none;white-space:nowrap}
+  .card{scroll-margin-top:80px}
+  .builder-in{flex-wrap:nowrap;gap:10px;padding-block:8px}
+  .builder .lbl{display:none}
+  .builder .cmd{flex:1 1 auto;min-height:44px;padding:4px 4px 4px 12px}
+  .builder .btn-sm{flex:none}
+}
 </style>
 </head>
 <body>
@@ -76,7 +92,7 @@
     <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
     <button class="menu-btn" type="button" aria-controls="sy-nav" aria-expanded="false"><span class="burger" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
     <nav class="nav-links" id="sy-nav" aria-label="Main">
-      <a class="nav-link" href="index.html#rollup">The Rollup</a><a class="nav-link on" aria-current="page" href="modules.html">Modules</a><a class="nav-link" href="api.html">API</a><a class="nav-link" href="index.html#trust">Provenance</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
+      <a class="nav-link" href="index.html#rollup">The Rollup</a><a class="nav-link on" aria-current="page" href="modules.html">Modules</a><a class="nav-link" href="setup.html">Setup</a><a class="nav-link" href="api.html">API</a><a class="nav-link" href="index.html#trust">Provenance</a><a class="nav-link" href="https://github.com/cwellbournewood/swissyphus">GitHub</a>
       <button class="btn solid btn-sm btn-cmd nav-cta" type="button" data-copy="install" aria-label="Copy install command: npx -y swissyphus"><span class="prompt">$</span>npx -y swissyphus</button>
     </nav>
   </div>
