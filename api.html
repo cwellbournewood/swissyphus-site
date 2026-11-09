@@ -54,13 +54,6 @@
 .er .code{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--trail-ink)}
 .er .ty{font-family:var(--mono);font-size:12.5px}
 .er .ds{font-size:13px;color:var(--ink-2);margin-top:2px;line-height:1.45}
-.tiers{width:100%;border-collapse:collapse;min-width:620px}
-.tiers th,.tiers td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--rule-dark);vertical-align:top}
-.tiers th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--glacier);font-weight:500}
-.tiers td{font-size:14px;color:var(--snow)}
-.tiers td.mono{font-size:12.5px;color:var(--glacier)}
-.tiers .t{font-variation-settings:'wdth' 118;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:16px}
-.tiers tr.hl td{background:rgba(217,123,79,.1)}
 .free-tag{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--night);background:var(--trail);padding:6px 10px;letter-spacing:.06em;width:fit-content}
 .conv{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px}
 .conv .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--trail-ink)}
@@ -137,9 +130,6 @@
       <div class="r ep"><span class="m get">GET</span><span class="p">/v1/sources</span><span class="d">Licence and source register for all <span data-count="sources">66</span> sources.</span></div>
       <div class="r ep"><span class="m get">GET</span><span class="p">/v1/health</span><span class="d">Liveness.</span></div>
       <div class="r ep"><span class="m get">GET</span><span class="p">/v1/health/sources</span><span class="d">Upstream source health (cached snapshot).</span></div>
-      <div class="r ep"><span class="m post">POST</span><span class="p">/v1/keys</span><span class="d">Create a free API key from an email address. Shown once.</span></div>
-      <div class="r ep"><span class="m get">GET</span><span class="p">/v1/usage</span><span class="d">Your metered usage (with a key).</span></div>
-      <div class="r ep"><span class="m del">DEL</span><span class="p">/v1/keys</span><span class="d">Permanent erasure of the key, email and usage history.</span></div>
       <div class="r ep"><span class="m get">GET</span><span class="p">/openapi.json</span><span class="d">OpenAPI 3.1, including the Envelope schema.</span></div>
       <div class="r ep"><span class="m get">GET</span><span class="p">/privacy</span><span class="d">Privacy notice (Swiss nFADP).</span></div>
       <div class="r ep"><span class="m post">POST</span><span class="p">/mcp</span><span class="d">Remote MCP over Streamable HTTP, stateless.</span></div>
@@ -174,40 +164,26 @@
         <div class="r er"><span class="code">404</span><div><div class="ty">no results</div><div class="ds">Unknown tool, or the source has no data for the query.</div></div></div>
         <div class="r er"><span class="code">413</span><div><div class="ty">body too large</div><div class="ds">Over <span class="c">SWISSYPHUS_MAX_BODY_BYTES</span> (1&nbsp;MiB by default).</div></div></div>
         <div class="r er"><span class="code">422</span><div><div class="ty">rejected by the tool</div><div class="ds">The parameters are well-formed, but the tool rejected the input.</div></div></div>
-        <div class="r er"><span class="code">429</span><div><div class="ty">rate limited</div><div class="ds">Over your tier&rsquo;s limit; the RateLimit-* headers say when to retry.</div></div></div>
+        <div class="r er"><span class="code">429</span><div><div class="ty">rate limited</div><div class="ds">Over the deployment&rsquo;s per-IP limit; the RateLimit-* headers say when to retry.</div></div></div>
         <div class="r er"><span class="code">503</span><div><div class="ty">source unavailable</div><div class="ds">An upstream source is down and no last good answer exists. See <span class="c">/v1/health/sources</span>.</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band dark" id="tiers" aria-labelledby="tiers-title">
+<section class="band dark" id="free" aria-labelledby="free-title">
   <div class="wrap sec">
     <div class="sec-head">
       <div class="stack">
-        <p class="eyebrow">Keys &amp; tiers</p>
-        <h2 class="display d2" id="tiers-title">Local: no key, ever.<br><span class="cool">Hosted: tiered.</span></h2>
-        <span class="free-tag">METERING ON &middot; BILLING IS UP TO THE OPERATOR</span>
+        <p class="eyebrow">Free &amp; open source</p>
+        <h2 class="display d2" id="free-title">No keys.<br><span class="cool">No accounts. No quotas.</span></h2>
+        <span class="free-tag">MIT LICENCE &middot; FREE FOR EVERYONE</span>
       </div>
-      <p class="lead">An HTTP deployment enforces per-IP limits for anonymous callers and per-key limits and quotas for key holders. Keys work on REST and on <span class="c">POST /mcp</span>, as <span class="c">Authorization: Bearer</span>, <span class="c">X-API-Key</span> or <span class="c">?api_key=</span>, and are stored only as a SHA-256 hash.</p>
+      <p class="lead">Swissyphus is open source and free to use, locally or hosted. Nothing to sign up for, nothing to pay. A local server has no limit at all. A hosted deployment applies one per-IP rate limit, 60 requests per minute by default (<span class="c">SWISSYPHUS_RATE_LIMIT_PER_MINUTE</span>), only to protect the public sources behind it.</p>
     </div>
-    <div class="scroll-x" style="border:1px solid var(--rule-dark)">
-      <table class="tiers">
-        <thead><tr><th scope="col">Tier</th><th scope="col">Rate limit</th><th scope="col">Monthly quota</th><th scope="col">How a caller gets it</th></tr></thead>
-        <tbody>
-          <tr><td class="t">Anonymous</td><td>60 req/min per IP</td><td>None</td><td>Just call it</td></tr>
-          <tr class="hl"><td class="t">Free</td><td>240 req/min</td><td>50&rsquo;000</td><td class="mono">POST /v1/keys {"email": "you@example.com"}</td></tr>
-          <tr><td class="t">Pro</td><td>1&rsquo;000 req/min</td><td>1&rsquo;000&rsquo;000</td><td>Promoted by the operator (<span class="c">/v1/admin</span>)</td></tr>
-          <tr><td class="t">Enterprise</td><td>Unlimited</td><td>Unlimited</td><td>Set by the operator</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="codebox" style="margin-top:24px">
-      <div class="codebox-bar"><span>GET A KEY &middot; USE IT &middot; CHECK USAGE</span><span class="sp"></span><button class="copy" type="button" data-copy-from="#keys-code" data-copy-label="Copied · key commands">Copy</button></div>
-<pre class="term" id="keys-code">curl -X POST https://your-host/v1/keys -d '{"email":"you@example.com"}'        # → sy_live_… (shown once)
-curl -H "Authorization: Bearer sy_live_…" "https://your-host/v1/tools/get_weather?plz=8001"
-curl -H "Authorization: Bearer sy_live_…" https://your-host/v1/usage
-curl -X DELETE -H "Authorization: Bearer sy_live_…" https://your-host/v1/keys  # permanent erasure</pre>
+    <div class="codebox">
+      <div class="codebox-bar"><span>JUST CALL IT</span><span class="sp"></span><button class="copy" type="button" data-copy-from="#free-code" data-copy-label="Copied · example request">Copy</button></div>
+<pre class="term" id="free-code">curl "https://your-host/v1/tools/get_weather?plz=8001"</pre>
     </div>
   </div>
 </section>
@@ -216,8 +192,8 @@ curl -X DELETE -H "Authorization: Bearer sy_live_…" https://your-host/v1/keys 
   <div class="wrap sec">
     <h2 class="display d3" id="conv-title" style="margin-bottom:28px">Conventions</h2>
     <div class="sheet g-4">
-      <div class="conv"><span class="k">AUTH</span><span class="v">None locally. Hosted tiers take a Bearer token, X-API-Key or ?api_key=.</span></div>
-      <div class="conv"><span class="k">RATE LIMITS</span><span class="v">Standard RateLimit-* headers on every response.</span></div>
+      <div class="conv"><span class="k">AUTH</span><span class="v">None. No keys, accounts or tokens, locally or hosted.</span></div>
+      <div class="conv"><span class="k">RATE LIMITS</span><span class="v">One per-IP limit on hosted deployments, with standard RateLimit-* headers on every response.</span></div>
       <div class="conv"><span class="k">CACHING</span><span class="v">Per-source TTLs, circuit breakers and a last-known-good store; cache_status says which answer you got.</span></div>
       <div class="conv"><span class="k">CORS</span><span class="v">Enabled, so you can call it straight from the browser.</span></div>
       <div class="conv"><span class="k">COORDINATES</span><span class="v">WGS84 and LV95 throughout; coords converts offline with cm accuracy.</span></div>
@@ -253,7 +229,7 @@ curl -X DELETE -H "Authorization: Bearer sy_live_…" https://your-host/v1/keys 
       <p class="eyebrow cool">Trust</p>
       <a href="index.html#trust">Provenance</a>
       <a href="api.html#errors">Errors</a>
-      <a href="api.html#tiers">Keys &amp; tiers</a>
+      <a href="api.html#free">Free &amp; open source</a>
       <a href="setup.html#doctor">Source health</a>
       <a href="https://github.com/cwellbournewood/swissyphus/blob/main/PRIVACY.md">Privacy</a>
     </div>
