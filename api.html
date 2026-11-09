@@ -139,6 +139,7 @@
       <div class="r ep"><span class="m get">GET</span><span class="p">/v1/usage</span><span class="d">Your metered usage (with a key).</span></div>
       <div class="r ep"><span class="m del">DEL</span><span class="p">/v1/keys</span><span class="d">Permanent erasure of the key, email and usage history.</span></div>
       <div class="r ep"><span class="m get">GET</span><span class="p">/openapi.json</span><span class="d">OpenAPI 3.1, including the Envelope schema.</span></div>
+      <div class="r ep"><span class="m get">GET</span><span class="p">/privacy</span><span class="d">Privacy notice (Swiss nFADP).</span></div>
       <div class="r ep"><span class="m post">POST</span><span class="p">/mcp</span><span class="d">Remote MCP over Streamable HTTP, stateless.</span></div>
     </div>
   </div>
@@ -170,6 +171,7 @@
         <div class="r er"><span class="code">400</span><div><div class="ty">invalid parameters</div><div class="ds">A parameter failed schema validation.</div></div></div>
         <div class="r er"><span class="code">404</span><div><div class="ty">no results</div><div class="ds">Unknown tool, or the source has no data for the query.</div></div></div>
         <div class="r er"><span class="code">413</span><div><div class="ty">body too large</div><div class="ds">Over <span class="c">SWISSYPHUS_MAX_BODY_BYTES</span> (1&nbsp;MiB by default).</div></div></div>
+        <div class="r er"><span class="code">422</span><div><div class="ty">rejected by the tool</div><div class="ds">The parameters are well-formed, but the tool rejected the input.</div></div></div>
         <div class="r er"><span class="code">429</span><div><div class="ty">rate limited</div><div class="ds">Over your tier&rsquo;s limit; the RateLimit-* headers say when to retry.</div></div></div>
         <div class="r er"><span class="code">503</span><div><div class="ty">source unavailable</div><div class="ds">An upstream source is down and no last good answer exists. See <span class="c">/v1/health/sources</span>.</div></div></div>
       </div>

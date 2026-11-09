@@ -23,7 +23,7 @@
       data: '{ "results": [ { "uid": "CHE-…", "legal_form": … } ] }', attribution: "© ZEFIX, Federal Office of Justice" },
     { fn: "search_sanctions_list", module: "sanctions", src: "SECO", args: { name: "Rotenberg" },
       desc: "Screen a name against the Swiss sanctions list, with fuzzy matching.",
-      data: '{ "matches": [ … ], "list_date": … }', attribution: "© SECO" },
+      data: '{ "matches": [ { "name": …, "listed_on": …, "program": … } ] }', attribution: "© SECO" },
     { fn: "compare_electricity_tariffs", module: "energy", src: "ElCom", args: { municipalities: ["Zürich", "Baden", "Bern"] }, post: true,
       desc: "Electricity tariffs for several municipalities, split into energy, grid and levies.",
       data: '{ "tariffs": [ { "municipality": "Zürich", … } ] }', attribution: "© ElCom" },
