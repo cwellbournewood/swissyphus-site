@@ -78,7 +78,7 @@
       ge.sec.hidden = visible === 0;
       ge.meta.textContent = visible + (visible === 1 ? " MODULE" : " MODULES");
     });
-    $("count").textContent = shownMods + " MODULES · " + shownTools + " TOOLS SHOWN";
+    $("count").textContent = shownTools + (shownTools === 1 ? " TOOL SHOWN" : " TOOLS SHOWN");
     $("empty").hidden = shownMods > 0;
     $("empty-q").textContent = state.q;
     $("clear-q").hidden = !state.q;
@@ -95,7 +95,8 @@
     else if (state.preset) cmd = SY.install + " --preset " + state.preset;
     else cmd = SY.install + " --modules " + sel.join(",");
     $("sel-cmd").textContent = cmd;
-    $("sel-label").textContent = sel.length ? sel.length + (sel.length === 1 ? " module" : " modules") : "all " + ORDER.length + " modules";
+    var selTools = sel.reduce(function (n, id) { return n + cards[id].m.tools.length; }, 0);
+    $("sel-label").textContent = sel.length ? selTools + (selTools === 1 ? " tool" : " tools") : "all " + (CAT.counts.tools || selTools) + " tools";
     $("clear-sel").hidden = !sel.length;
   }
 
