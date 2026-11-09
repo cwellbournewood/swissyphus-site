@@ -4,15 +4,30 @@
   var SY = window.SY, el = SY.el, CAT = window.SY_CATALOGUE || { groups: [], presets: {}, counts: {} };
   var $ = function (id) { return document.getElementById(id); };
 
-  // ---------- animation ----------
-  var stage = $("stage"), toggle = $("stage-toggle");
+  // ---------- film ----------
+  // Plays muted while on screen (never with reduced motion); "Sound on" restarts it from the top with sound.
+  var film = $("film"), sound = $("film-sound");
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) toggle.hidden = true;
-  toggle.addEventListener("click", function () {
-    var paused = stage.classList.toggle("paused");
-    toggle.textContent = paused ? "Play" : "Pause";
-    toggle.setAttribute("aria-pressed", paused ? "true" : "false");
-  });
+  if (film && !reduce && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && e.intersectionRatio > 0.5) { if (film.paused && film.muted) film.play().catch(function () {}); }
+        else if (!film.paused && film.muted) film.pause();
+      });
+    }, { threshold: [0, 0.5] }).observe(film);
+  }
+  if (film && sound) {
+    var sync = function () {
+      sound.textContent = film.muted ? "Sound on" : "Sound off";
+      sound.setAttribute("aria-pressed", film.muted ? "false" : "true");
+    };
+    sound.addEventListener("click", function () {
+      if (film.muted) { film.muted = false; film.currentTime = 0; film.play().catch(function () {}); }
+      else film.muted = true;
+      sync();
+    });
+    film.addEventListener("volumechange", sync);
+  }
 
   // ---------- gather chips ----------
   var chips = ["SBB", "MeteoSwiss", "swisstopo", "SLF", "Fedlex", "ZEFIX", "SHAB", "BFS", "SNB", "SECO",
