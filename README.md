@@ -13,7 +13,7 @@ IBM Plex Mono).
 
 | Page | File | What it does |
 |---|---|---|
-| Landing | `index.html` | Hero animation, example traces, preset map sheet, provenance, install tabs |
+| Landing | `index.html` | Hero film (`assets/video/`, 90 s), example traces, preset map sheet, provenance, install tabs |
 | Modules | `modules.html` | Every module and tool, searchable, with a rollup builder that writes the `--modules` / `--preset` command |
 | API | `api.html` | REST and remote MCP reference with a request/response playground, errors, keys and tiers |
 | Setup | `setup.html` | Client configs, presets, optional keys, Docker, troubleshooting |
