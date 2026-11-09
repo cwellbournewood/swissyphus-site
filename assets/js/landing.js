@@ -136,10 +136,11 @@
       t.className = !set ? "tile" : (set.indexOf(mods[k].id) >= 0 ? "tile hit" : "tile dim");
     });
     $("preset-cmd").textContent = "npx -y swissyphus --preset " + pk;
-    var total = mods.length, tools = CAT.counts.tools;
-    $("preset-note").textContent = !set ? "The full atlas: all " + total + " modules, all " + tools + " tools."
+    var tools = CAT.counts.tools;
+    var inSet = !set ? tools : mods.reduce(function (n, m) { return n + (set.indexOf(m.id) >= 0 ? m.tools.length : 0); }, 0);
+    $("preset-note").textContent = !set ? "The full atlas: all " + tools + " tools from all " + CAT.counts.sources + " sources."
       : pk === "discovery" ? "--preset discovery loads 7 meta tools; find_data and call_tool still reach all " + tools + "."
-      : "--preset " + pk + " loads " + set.length + " of " + total + " modules.";
+      : "--preset " + pk + " loads " + inSet + " of " + tools + " tools.";
   }
   renderPreset();
 
