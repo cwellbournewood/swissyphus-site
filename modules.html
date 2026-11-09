@@ -20,8 +20,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>
-.ph{padding-block:clamp(44px,6vw,80px) clamp(32px,4vw,52px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px 56px;align-items:end}
+.ph{padding-block:clamp(40px,5vw,64px) clamp(28px,3.5vw,44px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px 56px;align-items:end}
 @media (max-width:900px){.ph{grid-template-columns:minmax(0,1fr)}}
+.presets-band{background:var(--snow);border-bottom:1px solid var(--rule)}
+.presets-in{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-block:18px}
 .toolbar{position:sticky;top:64px;z-index:40;background:rgba(238,243,242,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 .toolbar-in{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-block:14px}
 .search{display:flex;align-items:center;gap:10px;border:1px solid var(--lake);background:var(--snow);padding:0 6px 0 14px;min-height:46px;flex:1 1 300px;max-width:440px}
@@ -85,15 +87,18 @@
   <div class="wrap ph">
     <div class="stack" style="gap:22px">
       <p class="eyebrow">The map sheet &middot; <span data-count="sources">66</span> sources &middot; <span data-count="tools">151</span> tools</p>
-      <h1 class="display d2" id="mods-title">Everything<br>we roll <span class="accent">up.</span></h1>
+      <h1 class="display d2" id="mods-title">Everything<br>we <span class="accent">roll up.</span></h1>
     </div>
     <div class="stack">
       <p class="lead">One MCP server drawing on <span data-count="sources">66</span> Swiss public sources. Search the atlas, then add modules to build exactly the rollup your agent needs. Every tool returns typed JSON with full provenance.</p>
-      <div class="row-wrap">
-        <span class="small">Start from a preset:</span>
-        <div class="row-wrap" id="presets" aria-label="Presets"></div>
-      </div>
     </div>
+  </div>
+</section>
+
+<section class="presets-band" aria-label="Start from a preset">
+  <div class="wrap presets-in">
+    <span class="eyebrow cool">Start from a preset</span>
+    <div class="row-wrap" id="presets" aria-label="Presets"></div>
   </div>
 </section>
 
