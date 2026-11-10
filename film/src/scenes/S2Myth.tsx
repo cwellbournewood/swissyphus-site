@@ -155,7 +155,7 @@ export const S2Myth: React.FC = () => {
 
       {/* type */}
       <div style={{ position: "absolute", left: 72, top: 104 }}>
-        <Eyebrow text="02 — The myth, retold" start={352} exitAt={EXIT} />
+        <Eyebrow text="02 · The myth, retold" start={352} exitAt={EXIT} />
         <div style={{ height: 22 }} />
         <div style={{ position: "relative", height: 166 }}>
           <div style={{ position: "absolute", left: 0, top: 0 }}>

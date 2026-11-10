@@ -1,13 +1,13 @@
-// Swissyphus — Carte Nationale system. Single source of truth for the film.
+// Swissyphus: Carte Nationale system. Single source of truth for the film.
 import { Easing } from "remotion";
 
 export const theme = {
   colors: {
-    lake: "#123C4D", // Lake Deep — ink, surfaces, rules
-    contour: "#1F7A8C", // Contour — lines, secondary labels
-    glacier: "#8FC1C4", // Glacier — fills, secondary text on dark
-    snow: "#EEF3F2", // Snowfield — paper / primary text on dark
-    trail: "#D97B4F", // Trail Marker — THE accent: the boulder
+    lake: "#123C4D", // Lake Deep: ink, surfaces, rules
+    contour: "#1F7A8C", // Contour: lines, secondary labels
+    glacier: "#8FC1C4", // Glacier: fills, secondary text on dark
+    snow: "#EEF3F2", // Snowfield: paper / primary text on dark
+    trail: "#D97B4F", // Trail Marker: THE accent: the boulder
     night: "#0B2733", // deepest surfaces
     ink2: "#3D5A63", // body text on paper
     trailInk: "#B0532A", // accent text on paper
@@ -42,8 +42,8 @@ export const theme = {
     textTransform: "uppercase" as const,
   },
   ease: {
-    out: Easing.bezier(0.16, 1, 0.3, 1), // easeOutExpo — entrances
-    inOut: Easing.bezier(0.83, 0, 0.17, 1), // easeInOutQuint — camera moves
+    out: Easing.bezier(0.16, 1, 0.3, 1), // easeOutExpo: entrances
+    inOut: Easing.bezier(0.83, 0, 0.17, 1), // easeInOutQuint: camera moves
     in: Easing.bezier(0.7, 0, 0.84, 0), // exits only
     soft: Easing.bezier(0.45, 0, 0.2, 1), // long glides
   },

@@ -15,7 +15,7 @@ IBM Plex Mono).
 |---|---|---|
 | Landing | `index.html` | Hero film (`assets/video/`, 90 s), example traces, preset map sheet, provenance, install tabs |
 | Modules | `modules.html` | Every module and tool, searchable, with a rollup builder that writes the `--modules` / `--preset` command |
-| API | `api.html` | REST and remote MCP reference with a request/response playground, errors, keys and tiers |
+| API | `api.html` | REST and remote MCP reference with a request/response playground, errors and rate limits |
 | Setup | `setup.html` | Client configs, presets, optional keys, Docker, troubleshooting |
 | Brand kit | `brand.html` | Mark, palette, type, voice and downloadable logo files |
 

@@ -284,7 +284,7 @@ export const S4Ask: React.FC = () => {
 
       {/* question column */}
       <div style={{ position: "absolute", left: 72, top: 160, width: 790, opacity: panelO }}>
-        <Eyebrow text="04 — A weekend in Zermatt · Mon 9 Nov, 12:43" start={806} />
+        <Eyebrow text="04 · A weekend in Zermatt · Mon 9 Nov, 12:43" start={806} />
         <div style={{ height: 20 }} />
         <div style={{ fontFamily: theme.fonts.body, fontWeight: 600, fontSize: 44, lineHeight: 1.12, letterSpacing: "-0.02em", color: c.snow, minHeight: 148 }}>
           <Typewriter text={q} start={814} cps={1.9} />

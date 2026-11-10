@@ -83,7 +83,7 @@ const groups = GROUPS.map((g) => ({
     return {
       id,
       title: m.title,
-      source: SOURCE[id] ?? m.sources.map((s) => s.name.split(" — ")[0]).join(" · "),
+      source: SOURCE[id] ?? m.sources.map((s) => s.name.split(": ")[0]).join(" · "),
       desc: m.description.replace(/\.?$/, "."),
       tools: m.tools.map((t) => [t.name, t.title || firstSentence(t.description)]),
     };

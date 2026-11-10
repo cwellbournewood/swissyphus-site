@@ -161,7 +161,7 @@
       <p class="eyebrow">HTTP &amp; Docker</p>
       <h2 class="display d3" id="http-title">Serve REST and remote MCP</h2>
       <p class="body">The same tools over HTTP, generated from the same schemas. Images are multi-arch (amd64, arm64) on Node 24 LTS Alpine, run as a non-root user with a <span class="c">HEALTHCHECK</span> against <span class="c">/v1/health</span>, and shut down gracefully on SIGTERM.</p>
-      <p class="small">Keys and the last-known-good store live under <span class="c">/app/data</span>. Set <span class="c">ADMIN_TOKEN</span> (32+ characters) to enable <span class="c">/v1/admin/*</span>. Production setup with automatic TLS: <a class="link" href="https://github.com/cwellbournewood/swissyphus/blob/main/deploy/README.md">deploy/</a>.</p>
+      <p class="small">The last-known-good store of source responses lives under <span class="c">/app/data</span>. Production setup with automatic TLS: <a class="link" href="https://github.com/cwellbournewood/swissyphus/blob/main/deploy/README.md">deploy/</a>.</p>
     </div>
     <div class="stack" style="justify-content:center">
       <div class="codebox">
@@ -211,7 +211,7 @@ docker run -p 8000:8000 ghcr.io/cwellbournewood/swissyphus --http --preset hoste
   <div class="wrap foot-in">
     <div class="foot-brand">
       <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>swissyphus</a>
-      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources &mdash; every answer cited, down to the exact upstream request.</p>
+      <p class="small">The Swiss public-data rollup for AI agents. One MCP server and REST API over <span data-count="sources">66</span> public sources, every answer cited, down to the exact upstream request.</p>
     </div>
     <div class="foot-col">
       <p class="eyebrow cool">Product</p>
@@ -224,7 +224,7 @@ docker run -p 8000:8000 ghcr.io/cwellbournewood/swissyphus --http --preset hoste
       <p class="eyebrow cool">Trust</p>
       <a href="index.html#trust">Provenance</a>
       <a href="api.html#errors">Errors</a>
-      <a href="api.html#tiers">Keys &amp; tiers</a>
+      <a href="api.html#free">Free &amp; open source</a>
       <a href="setup.html#doctor">Source health</a>
       <a href="https://github.com/cwellbournewood/swissyphus/blob/main/PRIVACY.md">Privacy</a>
     </div>

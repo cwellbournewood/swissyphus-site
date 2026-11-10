@@ -124,7 +124,7 @@
   var tileEls = mods.map(function (m) {
     var a = el("a", { class: "tile", href: "modules.html#" + m.id }, [
       el("span", { class: "nm", text: m.id }),
-      el("span", { class: "ds", text: m.desc.split(/ — |; |\. /)[0].replace(/\.$/, "") }),
+      el("span", { class: "ds", text: m.desc.split(/; |\. /)[0].replace(/\.$/, "") }),
       el("span", { class: "sr", text: m.source })]);
     $("tiles").appendChild(a);
     return a;
